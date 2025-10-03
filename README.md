@@ -296,7 +296,7 @@ I used the following commands:
 
 ```bash
 git add README.md
-git commit -m "commit"
+git commit -m "first commit"
 git branch -M main
 git push -u origin main
 ```
