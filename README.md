@@ -280,7 +280,7 @@ I didn't have any issues with viewing or downloading the file. I think it's a ve
 
 I would say it's mostly fine but there are places where formatting doesn't look like I want it to, so I basically went through the same steps to render the file again after I adjusted my Markdown file. 
 
-At the end I also committed to the README file again, like it was asked:
+At the end I also committed to the README file again, as it was asked:
 
 ```bash
 git add README.md
@@ -295,7 +295,6 @@ git commit -m "Committing to README for part E"
 I used the following commands:
 
 ```bash
-git init 
 git remote add GA3 git@github.com:kolganovaanna/GA3.gitgit@github.com:kolganovaanna/GA3.git 
 
 git push -u GA3 main
@@ -304,4 +303,10 @@ git push -u GA3 main
 18. Create a new issue and tag GitHub user menukabh, asking Menuka to take a look at your assignment.
 
 Done in GitHub
-#GA3
+
+At the end I also committed to the README file again, as it was asked:
+
+```bash
+git add README.md
+git commit -m "Committing to README for part F"
+```
