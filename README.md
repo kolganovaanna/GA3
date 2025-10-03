@@ -145,7 +145,7 @@ ERR10802882     10dpi   cathemerium
 And the file metadataline2.txt was created under results
 ```
 
-**Note**: I struggled a bit with the right syntax for the last command. I didn't see us using "%" in class (maybe missed it), so here I would like to note that I used it so the file name is not metadata.tsv but just metadata. Actually, when I ran it without "%", the terminal said "bad substitution". I want to share the geeks webpage that talks about using "%" (which I think is sometimes called a suffix or extension like in this webpage): <https://www.geeksforgeeks.org/linux-unix/bash-scripting-file-extension/> 
+**Note**: I struggled a bit with the right syntax for the last command. I didn't see us using "%" in class (maybe missed it), so here I would like to note that I used it so the file name is not metadata.tsv but just metadata. Actually, when I ran it without "%", the terminal said "bad substitution". I want to share the geeks webpage that talks about using "%" (which I think is sometimes called a suffix as well as an extension like in this webpage): <https://www.geeksforgeeks.org/linux-unix/bash-scripting-file-extension/> 
 
 At the end I also committed to the README file again, like it was asked:
 
@@ -163,12 +163,52 @@ I used the following commads:
 
 ```bash
 
-apptainer exec oras://community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18 trim_galore -v
+apptainer exec oras://community.wave.seqera.io/library/trim-galore:0.6.10--bc38c9238980c80e \
+  trim_galore -v
+```
+The output was:
 
-community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18
+```bash
+INFO:    Using cached SIF image
+INFO:    gocryptfs not found, will not be able to use gocryptfs
+
+                        Quality-/Adapter-/RRBS-/Speciality-Trimming
+                                [powered by Cutadapt]
+                                  version 0.6.10
+
+                               Last update: 02 02 2023
+```
+
+11. It turns out that your collaborator has been using an older version of Trim-Galore to trim other FASTQ files in the same project, so you decide that it will be best if you use that same version as well. Find a container for Trim-Galore version 0.5.0 and test-run it with the same command as above. Are the versions printed in both cases as expected?
+
+I used the following commands:
+
+```bash
+apptainer exec oras://community.wave.seqera.io/library/trim-galore:0.5.0--16bd677ee493f6cd \
+  trim_galore -v
+```
+
+The output was:
+
+```bash
+INFO:    Downloading oras image
+409.7MiB / 409.7MiB [=========================================================================================] 100 % 60.6 MiB/s 0s
+INFO:    gocryptfs not found, will not be able to use gocryptfs
+
+                        Quality-/Adapter-/RRBS-/Hard-Trimming
+                                (powered by Cutadapt)
+                                  version 0.5.0
+
+                               Last update: 28 06 2018
+```
+The outputs differ due to the different version but it's expected. 
 
 
+At the end I also committed to the README file again, like it was asked:
 
-apptainer exec oras://community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18
+```bash
+git add README.md
+git commit -m "Committing to README for part D"
+```
 
 
