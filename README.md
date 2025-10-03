@@ -295,9 +295,10 @@ git commit -m "Committing to README for part E"
 I used the following commands:
 
 ```bash
-git remote add GA3 git@github.com:kolganovaanna/GA3.gitgit@github.com:kolganovaanna/GA3.git 
-
-git push -u GA3 main
+git add README.md
+git commit -m "commit"
+git branch -M main
+git push -u origin main
 ```
 
 18. Create a new issue and tag GitHub user menukabh, asking Menuka to take a look at your assignment.
