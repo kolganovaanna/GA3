@@ -25,7 +25,7 @@ echo "$3"
 echo "Finished"' > echo.sh
 ```
 
-For the offered commands, I expect that the first one will print the first two dates (Oct 7 and Oct 8). The second command will print Oct 7-9 dates but will replaced Oct 10 with "finished" in the 4th last line as it is applied by the code. The last command will have Oct 7 and 8 on separate lines and Oct 9 and 10 in 1 separate line because they are in "" (a string). This is what I see as my output, too.
+For the offered commands, I expect that the first one will print the first two dates (Oct 7 and Oct 8). The second command will print Oct 7-9 dates but will replaced Oct 10 with "finished" in the 4th last line as it is applied by the code. The last command will have Oct 7 and 8 on separate lines and Oct 9 and 10 in 1 separate line because they are in "" (indicated as a string). This is what I see as my output,too.
 
 When I used the commands listed in the assigment, my terminal responded that there's no such file directory. My pwd says /fs/ess/PAS2880/users/kolganovaanna/GA3/scripts and ls -l command confirms the existence of echo.sh. file. I think I probably don't need the scripts part in the code because I'm already in scripts. Without it, the code works and I hope it's not a big deal:
 
@@ -85,7 +85,8 @@ In my command, I intend to just use the last line of the file to be printed. For
 tail -n 1 printline.sh | head -1
 ```
 
-**Note**: thank you for specifying the commands you want us to use. I've seen 'sed' used for that but I don't have any experience with it. This is a webpage that explains how to do the same with 'sed' that I came across: <https://www.geeksforgeeks.org/linux-unix/write-bash-script-print-particular-line-file/>. I also want to refer to the sources that helped me make the head and line combination, too, : <https://stackoverflow.com/questions/64376028/displaying-selected-lines-using-head-and-tail-command> and <https://www.youtube.com/watch?v=4BwcFWhqlA8>.
+**Note**: thank you for specifying the commands you want us to use. I want to share this link that has a nice (in my opinion) explanation on how to do the same but using 'sed': <https://www.geeksforgeeks.org/linux-unix/write-bash-script-print-particular-line-file/>.  
+I also want to refer to the sources that helped me with the head and line combinations : <https://stackoverflow.com/questions/64376028/displaying-selected-lines-using-head-and-tail-command> and <https://www.youtube.com/watch?v=4BwcFWhqlA8>.
 
 
 
@@ -99,7 +100,7 @@ I had to first move to /fs/ess/PAS2880/users/kolganovaanna using cd to access ga
 tail -n 1 garrigos-data/meta/metadata.tsv | head -1
 tail -n+2 garrigos-data/meta/metadata.tsv | head -1
 ```
-tail -n 2 garrigos-data/meta/metadata.tsv | head -1
+
 The outputs were the last line of the file and the second line of the file (1st line of the dataset): 
 
 ```bash
@@ -115,7 +116,7 @@ tail -n+2 garrigos-data/meta/metadata.tsv | head -1 > GA3/results/secondline.txt
 
 9. Run a final test, but now: First, store the file name (just metadata.tsv) in one variable and the line number you chose in another. Then, use these two variables as the arguments that you give to the script. Finally, redirect the script’s output to a file in results whose name includes both the file name and the line number. But instead of simply typing the literal output file name, use the two variables you created again, now to “build” the output file name programmatically. The output file name should not include any spaces.
 
-Here, I will just use line 2 (1st line of the dataset itself). I used the following commands:
+Here, I will just use line 2. I used the following commands:
 
 ```bash
 
@@ -123,11 +124,28 @@ Here, I will just use line 2 (1st line of the dataset itself). I used the follow
 file=metadata.tsv
 line=2
 
-./results/secondline.txt garrigos-data/meta/$file $line > results/${file%.tsv}_line${line}.txt
+For check: 
+echo "$file"
+echo "$line"
+
+
+tail -n+"$line" "garrigos-data/meta/$file" | head -1 
+
+tail -n+"$line" "garrigos-data/meta/$file" | head -1 > "GA3/results/${file%.tsv}line${line}.txt"
 ```
-chmod +x results/secondline.txt
 
+The outputs were:
 
+```bash
+metadata.tsv
+2
+
+ERR10802882     10dpi   cathemerium
+
+And the file metadataline2.txt was created under results
+```
+
+**Note**: I struggled a bit with the right syntax for the last command. I didn't see us using "%" in class (maybe missed it), so here I would like to note that I used it so the file name is not metadata.tsv but just metadata. Actually, when I ran it without "%", the terminal said "bad substitution". I want to share the geeks webpage that talks about using "%" (which I think is sometimes called a suffix or extension like in this webpage): <https://www.geeksforgeeks.org/linux-unix/bash-scripting-file-extension/> 
 
 At the end I also committed to the README file again, like it was asked:
 
