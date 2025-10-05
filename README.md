@@ -121,10 +121,10 @@ tail -n+2 garrigos-data/meta/metadata.tsv | head -1 > GA3/results/secondline.txt
 
 9. Run a final test, but now: First, store the file name (just metadata.tsv) in one variable and the line number you chose in another. Then, use these two variables as the arguments that you give to the script. Finally, redirect the script’s output to a file in results whose name includes both the file name and the line number. But instead of simply typing the literal output file name, use the two variables you created again, now to “build” the output file name programmatically. The output file name should not include any spaces.
 
-Here, I will just use line 2. I used the following commands:
+Here I will just use line 2. I used the following commands:
 
 ```bash
-#!/bin/bash
+#!/bin/bash 
 file=metadata.tsv
 line=2
 
