@@ -300,6 +300,16 @@ git commit -m "first commit"
 git branch -M main
 git push -u origin main
 ```
+**Note** I originally got a bit confused and only added README to git. Thanks to Menuka, I now know other files have to be there too. 
+
+```bash
+git add .
+git commit -m "Adding files that I forgot to add"
+git push -u origin main
+
+For check:
+git status
+```
 
 18. Create a new issue and tag GitHub user menukabh, asking Menuka to take a look at your assignment.
 
